@@ -1,0 +1,22 @@
+from kivymd.app import MDApp
+from kivy.core.window import Window
+from ViewModel.MainScreen import MainScreen
+
+Window.minimum_width, Window.minimum_height = (700, 500)
+
+
+class MainApp(MDApp):
+    def build(self):
+        self.title = "InvoiceValidator"
+        # self.icon = "Assets/logo.png"
+        self.theme_cls.primary_palette = 'Indigo'
+        self.theme_cls.accent_palette = 'Gray'
+        self.theme_cls.primary_hue = '500'
+        self.theme_cls.accent_hue = '300'
+        self.theme_cls.theme_style = 'Dark'
+
+        return MainScreen()
+
+
+if __name__ == '__main__':
+    MainApp().run()

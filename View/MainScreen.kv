@@ -1,0 +1,44 @@
+<MainScreen>
+    id: mainscreen_viewmodel
+
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 20
+
+        MDTopAppBar:
+            title: "Invoice Validator"
+            pos_hint: {"center_x": .5, "center_y": .9}
+            anchor_y: "top"
+
+        RelativeLayout:
+            rows: 3
+            size: (200, 200)
+
+            Label:
+                text: root.folderPath[0]
+                pos_hint: {"center_x": .5, "center_y": .9}
+
+            Label:
+                text: root.folderPath[1]
+                pos_hint: {"center_x": .5, "center_y": .8}
+
+            Label:
+                text: root.folderPath[2]
+                pos_hint: {"center_x": .5, "center_y": .7}
+
+            MDFillRoundFlatButton:
+                id: ok_button
+                text: "Carregar arquivos"
+                pos_hint: {"center_x": .5, "center_y": .5}
+                size_hint_x: .5
+                custom_color: "white"
+                size: (300, 300)
+                on_press: root.try_button_click()
+
+            MDFillRoundFlatButton:
+                id: ok_button
+                text: "Gerar relatório"
+                pos_hint: {"center_x": .5, "center_y": .12}
+                size_hint_x: .2
+                custom_color: "white"
+                on_press: root.generate_relatory_click()

@@ -1,6 +1,6 @@
 from kivymd.app import MDApp
 from kivy.core.window import Window
-from ViewModel.MainScreen import MainScreen
+from Control.ScreenManagement import ScreenManagement
 
 Window.minimum_width, Window.minimum_height = (700, 500)
 
@@ -15,7 +15,7 @@ class MainApp(MDApp):
         self.theme_cls.accent_hue = '300'
         self.theme_cls.theme_style = 'Dark'
 
-        return MainScreen()
+        return ScreenManagement()
 
 
 if __name__ == '__main__':

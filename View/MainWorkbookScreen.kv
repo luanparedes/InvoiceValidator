@@ -1,0 +1,56 @@
+#:import WorksheetBaseScreen ViewModel.WorksheetBaseScreen.WorksheetBaseScreen
+#:import WorksheetSmartScreen ViewModel.WorksheetSmartScreen.WorksheetSmartScreen
+#:import WorksheetReceiveScreen ViewModel.WorksheetReceiveScreen.WorksheetReceiveScreen
+#:import WorksheetFilteredScreen ViewModel.WorksheetFilteredScreen.WorksheetFilteredScreen
+
+<MainWorkbookScreen>
+    id: viewmodel_workbook
+
+    FloatLayout:
+        MDTopAppBar:
+	        size_hint: 1, .08
+	        pos_hint: {'center_x': .5, 'center_y': .96}
+	        title: 'Invoice Generator'
+            elevation: 1
+            left_action_items: [["menu", lambda x: main_screen_viewmodel.open_menu(x)]]
+
+        MDBottomNavigation:
+            panel_color: .2, .2, .2, 1
+            size_hint: 1, .92
+            text_color_normal: .8, .8, .8, .8
+
+            MDBottomNavigationItem:
+                name: 'base_screen'
+                text: 'Planilha base'
+                icon: 'card-account-details-star'
+                on_enter: base_screen_id.on_enter_worksheet()
+
+                WorksheetBaseScreen:
+                    id: base_screen_id
+
+            MDBottomNavigationItem:
+                name: 'smart_screen'
+                text: 'Planilha Smart'
+                icon: 'map'
+                on_enter: smart_screen_id.on_enter_worksheet()
+
+                WorksheetSmartScreen:
+                    id: smart_screen_id
+
+            MDBottomNavigationItem:
+                name: 'receive_screen'
+                text: 'Planilha recebimento'
+                icon: 'book-information-variant'
+                on_enter: receive_screen_id.on_enter_worksheet()
+
+                WorksheetReceiveScreen:
+                    id: receive_screen_id
+
+            MDBottomNavigationItem:
+                name: 'filtered_screen'
+                text: 'Planilha gerada'
+                icon: 'gamepad-square'
+                on_enter: generated_screen_id.on_enter_worksheet()
+
+                WorksheetFilteredScreen:
+                    id: generated_screen_id

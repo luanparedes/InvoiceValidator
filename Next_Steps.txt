@@ -1,0 +1,8 @@
+### Invoice Validator ###
+
+TODO:
+	- Use another library to get xls and xlms files. Actual lib just works with xlms.
+	- Get original spreadsheets and set columns accordingly on Datatable.
+	- Investigate why the app is breaking sometimes on data table mouse over.
+	- Create the Generated Excel file filtering by access key.
+	- Create color pallete.

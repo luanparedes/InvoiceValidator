@@ -6,9 +6,13 @@ from Control.SpreadsheetTypeEnum import SpreadsheetTypeEnum
 
 class ExcelService:
 
+    # region Properties
     generated_list = []
     access_keys = {'base': [], 'smart': [], 'receive': []}
+    # endregion
 
+    # region Static Methods
+    @staticmethod
     def write_excel(self):
         # Create a new Excel file and add a worksheet.
         # workbook = xlsxwriter.Workbook(f'{self.folderPath}\\Validate{date.today()}.xlsx')
@@ -36,13 +40,10 @@ class ExcelService:
 
         workbook.close()
 
-    def read_excel(self, spreadsheet, type):
-        workbook = openpyxl.load_workbook(spreadsheet[type])
+    @staticmethod
+    def read_excel(self, spreadsheet, worksheet_type, spread_index):
+        workbook = openpyxl.load_workbook(spreadsheet[spread_index])
         worksheet = workbook.active
 
-        if type == SpreadsheetTypeEnum.BASE:
-            self.access_keys['base'] = [worksheet.cell(row=i, column=1).value for i in range(1, worksheet.max_row + 1)]
-        elif type == SpreadsheetTypeEnum.SMART:
-            self.access_keys['smart'] = [worksheet.cell(row=i, column=1).value for i in range(1, worksheet.max_row + 1)]
-        elif type == SpreadsheetTypeEnum.RECEIVE:
-            self.access_keys['receive'] = [worksheet.cell(row=i, column=1).value for i in range(1, worksheet.max_row + 1)]
+        self.access_keys[worksheet_type] = [worksheet[i] for i in range(1, worksheet.max_row + 1)]
+    # endregion
